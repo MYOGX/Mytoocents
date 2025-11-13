@@ -1,5 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
-import { cookies } from 'next/headers';
+import { createClient } from '@/lib/supabaseServer';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
@@ -7,12 +6,8 @@ export async function GET(request: Request) {
   const code = requestUrl.searchParams.get('code');
 
   if (code) {
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
-
-    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+    const supabase = createClient();
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (error) {
       console.error('Auth error:', error);
