@@ -32,10 +32,9 @@ export default function LoginPage() {
           text: 'Account created! Signing you in...',
         });
 
-        // Wait a moment then redirect
+        // Hard redirect to force session refresh
         setTimeout(() => {
-          router.push('/');
-          router.refresh();
+          window.location.href = '/';
         }, 1000);
       } else {
         // Sign in
@@ -46,8 +45,8 @@ export default function LoginPage() {
 
         if (error) throw error;
 
-        router.push('/');
-        router.refresh();
+        // Hard redirect to force session refresh
+        window.location.href = '/';
       }
     } catch (error: any) {
       setMessage({
