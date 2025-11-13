@@ -13,6 +13,7 @@ export default function AdminPage() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [generating, setGenerating] = useState(false);
   const [formData, setFormData] = useState({
     question_text: '',
     option_a: '',
@@ -60,6 +61,87 @@ export default function AdminPage() {
     } catch (error) {
       console.error('Error loading questions:', error);
     }
+  };
+
+  const generateAIQuestion = () => {
+    setGenerating(true);
+
+    // AI-generated trending questions
+    const questionTemplates = [
+      {
+        question_text: "Which social media platform has the most authentic content?",
+        option_a: "TikTok",
+        option_b: "Instagram",
+        option_c: "X (Twitter)",
+        option_d: "YouTube"
+      },
+      {
+        question_text: "What's the biggest threat to society in 2025?",
+        option_a: "AI taking jobs",
+        option_b: "Climate change",
+        option_c: "Social media addiction",
+        option_d: "Economic inequality"
+      },
+      {
+        question_text: "If you could only eat one cuisine for the rest of your life?",
+        option_a: "Italian",
+        option_b: "Mexican",
+        option_c: "Japanese",
+        option_d: "American"
+      },
+      {
+        question_text: "What's the most overrated thing in modern life?",
+        option_a: "Coffee culture",
+        option_b: "Influencers",
+        option_c: "Streaming services",
+        option_d: "Cryptocurrency"
+      },
+      {
+        question_text: "Which skill will be most valuable in 10 years?",
+        option_a: "AI/Coding",
+        option_b: "Emotional intelligence",
+        option_c: "Content creation",
+        option_d: "Critical thinking"
+      },
+      {
+        question_text: "Best way to spend a free Sunday?",
+        option_a: "Binge watching shows",
+        option_b: "Outdoor adventure",
+        option_c: "Hanging with friends",
+        option_d: "Side hustle/learning"
+      },
+      {
+        question_text: "What dating app actually works?",
+        option_a: "Hinge",
+        option_b: "Bumble",
+        option_c: "Tinder",
+        option_d: "Meeting IRL"
+      },
+      {
+        question_text: "Morning routine must-have?",
+        option_a: "Coffee/Tea",
+        option_b: "Workout",
+        option_c: "Social media scroll",
+        option_d: "Meditation/Journaling"
+      }
+    ];
+
+    // Pick a random question
+    const randomQuestion = questionTemplates[Math.floor(Math.random() * questionTemplates.length)];
+
+    // Set today's date as default
+    const today = new Date().toISOString().split('T')[0];
+
+    setFormData({
+      ...randomQuestion,
+      active_date: today
+    });
+
+    setShowForm(true);
+    setGenerating(false);
+
+    // Show success message
+    alert('✨ AI Question Generated! Edit if needed and click Create.');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -133,12 +215,21 @@ export default function AdminPage() {
       <div className="card">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Admin Panel</h2>
-          <button
-            onClick={() => setShowForm(!showForm)}
-            className="btn btn-primary"
-          >
-            {showForm ? 'Cancel' : '+ New Question'}
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={generateAIQuestion}
+              disabled={generating}
+              className="btn bg-purple-600 text-white hover:bg-purple-700 disabled:bg-gray-400"
+            >
+              {generating ? '✨ Generating...' : '✨ AI Question'}
+            </button>
+            <button
+              onClick={() => setShowForm(!showForm)}
+              className="btn btn-primary"
+            >
+              {showForm ? 'Cancel' : '+ Manual Question'}
+            </button>
+          </div>
         </div>
 
         {showForm && (
