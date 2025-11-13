@@ -4,6 +4,12 @@ import type { NextRequest } from 'next/server';
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
+
+  // Skip middleware for auth callback to avoid interference
+  if (req.nextUrl.pathname === '/auth/callback') {
+    return res;
+  }
+
   const supabase = createMiddlewareClient({ req, res });
 
   const {

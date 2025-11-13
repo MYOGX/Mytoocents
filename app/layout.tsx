@@ -18,7 +18,9 @@ export default function RootLayout({
         <div className="min-h-screen flex flex-col">
           <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
             <div className="max-w-4xl mx-auto px-4 py-4">
-              <h1 className="text-2xl font-bold text-blue-600">MyToo ¢ 💰</h1>
+              <h1 className="text-2xl font-bold text-blue-600">
+                MyToo<span className="text-4xl ml-0.5">¢</span> 💰
+              </h1>
             </div>
           </header>
           <main className="flex-1 max-w-4xl w-full mx-auto px-4 py-8">

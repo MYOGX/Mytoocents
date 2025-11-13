@@ -41,7 +41,9 @@ export default function LoginPage() {
   return (
     <div className="max-w-md mx-auto mt-12">
       <div className="card">
-        <h1 className="text-3xl font-bold text-center mb-2">Welcome to MyToo ¢</h1>
+        <h1 className="text-3xl font-bold text-center mb-2">
+          Welcome to MyToo<span className="text-5xl ml-1">¢</span>
+        </h1>
         <p className="text-gray-600 text-center mb-8">
           Sign in to share your opinion and earn ¢!
         </p>
