@@ -5,7 +5,7 @@ import { supabase } from '@/lib/supabaseClient';
 import { Question } from '@/lib/types';
 
 // Hard-coded admin email - replace with your email
-const ADMIN_EMAIL = 'your-admin@example.com';
+const ADMIN_EMAIL = 'wschumeyerjr1@gmail.com';
 
 export default function AdminPage() {
   const [loading, setLoading] = useState(true);
