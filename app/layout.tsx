@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
-  title: 'MyToo ¢',
+  title: 'MyTooSense',
   description: 'Share your opinion, one question at a time',
 };
 
@@ -19,7 +19,7 @@ export default function RootLayout({
           <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
             <div className="max-w-4xl mx-auto px-4 py-4">
               <h1 className="text-2xl font-bold text-blue-600">
-                MyToo<span className="text-4xl ml-0.5">¢</span> 💰
+                MyTooSense 💰
               </h1>
             </div>
           </header>
@@ -29,7 +29,7 @@ export default function RootLayout({
           </main>
           <footer className="bg-white border-t border-gray-200 py-4">
             <div className="max-w-4xl mx-auto px-4 text-center text-sm text-gray-600">
-              Share your opinion daily and earn ¢!
+              Share your opinion daily and earn Rewards!
             </div>
           </footer>
         </div>

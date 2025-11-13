@@ -1,6 +1,6 @@
-# MyToo ¢
+# MyTooSense
 
-A daily opinion-sharing app where users answer one multiple-choice question per day, earn cents (¢), and see how their opinion compares to others.
+A daily opinion-sharing app where users answer one multiple-choice question per day, earn rewards, and see how their opinion compares to others.
 
 ## Setup Instructions
 
